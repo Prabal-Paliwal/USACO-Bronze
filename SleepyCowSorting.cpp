@@ -12,38 +12,11 @@ int main(){
     vector<int> a(n);
     for(int& i : a)cin >> i;
     
-    int dif = 4;
+    int dif = 0;
     for(int i = 1; i < n; i++){
         if(a[i] < a[i-1]){
             dif = i;
         }
     }
-    int total = 0;
-    while(true){
-        bool works = true;
-        for(int i = 0; i < n; i++){
-            if(a[i] != i+1){
-                works = false;
-                break;
-            }
-        }
-        if(works)break;
-        total++;
-        int movingI = dif;
-        if(a[0] < a[dif]){
-            movingI = dif - 1;
-        }else{
-            while(a[movingI] < a[0] && movingI < n){
-                movingI++;
-            }
-            movingI--;
-            dif--;
-        }
-        int v = a[0];
-        for(int i = 0; i < movingI; i++){
-            a[i] = a[i+1];
-        }
-        a[movingI] = v;
-    }
-    cout << total;
+    cout << dif;
 }
